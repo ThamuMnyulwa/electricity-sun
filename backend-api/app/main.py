@@ -20,3 +20,14 @@ def calculate(data: CalculationInput):
 def calculate_detail(data: CalculationInput):
     """Return calculation results with intermediate values."""
     return compute_detail(data)
+
+
+def main():
+    """Entry point for the application."""
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+if __name__ == "__main__":
+    main()
