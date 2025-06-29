@@ -82,12 +82,13 @@ def _calculate_values(inputs: CalculationInput) -> dict:
     # 5. Total battery system cost (R)
     total_battery_cost_R = required_capacity_kWh * inputs.battery_cost_kWh
 
-    # 6. Annual kWh shifted (accounting for efficiency losses)
+    # 6. Annual kWh shifted (accounting for efficiency losses and excluding weekends)
+    working_days_per_year = 365 - 104  # Exclude 104 weekend days
     kWh_moved_per_year = (
         peak_load_energy
+        * inputs.battery_efficiency  
+        * working_days_per_year
         * inputs.cycles_per_day
-        * inputs.days_per_year
-        * inputs.battery_efficiency
     )
 
     # 7. Solar generation calculations
