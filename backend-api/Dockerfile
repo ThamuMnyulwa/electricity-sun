@@ -4,9 +4,10 @@ WORKDIR /app
 # Install uv to manage dependencies
 RUN pip install --no-cache-dir uv
 
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 # Use uv to install dependencies
 RUN uv pip install --no-cache-dir -r pyproject.toml
+
 
 COPY app ./app
 
