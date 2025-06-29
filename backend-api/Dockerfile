@@ -6,8 +6,8 @@ RUN pip install --no-cache-dir uv
 
 COPY pyproject.toml ./
 # Use uv to install dependencies
-RUN uv pip install --no-cache-dir -r pyproject.toml
-
+# RUN uv pip install --no-cache-dir -r pyproject.toml
+RUN uv pip install --system --no-cache-dir -r pyproject.toml
 
 COPY app ./app
 
