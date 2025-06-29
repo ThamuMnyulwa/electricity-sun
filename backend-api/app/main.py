@@ -10,6 +10,11 @@ from .calculator import (
 app = FastAPI(title="Renewable Energy Calculator")
 
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Renewable Energy Calculator API"}
+
+
 @app.post("/calculate", response_model=CalculationResult)
 def calculate(data: CalculationInput):
     """Return renewable energy calculation results."""
